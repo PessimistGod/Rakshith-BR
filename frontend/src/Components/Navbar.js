@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa6";
 import { BsHandbagFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { debounce } from 'lodash'
 
 const Navbar = () => {
   const [data, setData] = useState({ user_name: "Rahul" });
@@ -48,20 +49,36 @@ const Navbar = () => {
   function handleMouseOut() {
     setDisplayedLinks([]);
   }
+
+  const handleLocation = debounce((e) => {
+    const navigationElement = document.getElementById('navigation');
+
+    if (navigationElement) {
+      const { left, right } = navigationElement.getBoundingClientRect();
+
+      if (e.clientX < left || e.clientX > right) {
+        setDisplayedLinks([]);
+      }
+    }
+  }, 100)
   
+  
+
+
+
   return (
     <>
-      <nav className="flex justify-around bg-black text-white items-center py-3 relative">
+      <nav className="flex justify-around bg-black text-white py-3 items-center relative">
         <div className="flex space-x-2">
           <div>
             <img src="" alt="JANI-LOGO" />
           </div>
           <div>JANI</div>
         </div>
-        <div className="flex space-x-8 items-center" onMouseLeave={handleMouseOut}>
-          <div onMouseEnter={() => handleDisplay('office')}>Office</div>
-          <div onMouseEnter={() => handleDisplay('bridal')}>Bridal</div>
-          <div onMouseEnter={() => handleDisplay('ethnic')}>Ethnic</div>
+        <div className="flex space-x-8 items-center" id="navigation" onMouseOut={handleLocation}>
+          <div onMouseOver={() => handleDisplay('office')}>Office</div>
+          <div onMouseOver={() => handleDisplay('bridal')}>Bridal</div>
+          <div onMouseOver={() => handleDisplay('ethnic')}>Ethnic</div>
         </div>
         <div className="flex space-x-6 items-center">
           <div>
@@ -77,9 +94,11 @@ const Navbar = () => {
         </div>
       </nav>
       {displayedLinks.length > 0 && (
-        <div className="h-[90vh] w-full bg-white flex flex-col absolute" onClick={handleMouseOut}>
+        <div className="min-h-[30vh] w-full bg-white absolute  grid grid-cols-2 shadow-xl"
+         onMouseLeave={handleMouseOut} 
+        >
           {displayedLinks.map(([item, link]) => (
-            <Link key={item} to={link}>
+            <Link className="flex justify-center mt-10" key={item} to={link}>
               {item}
             </Link>
           ))}
