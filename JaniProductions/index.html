@@ -46,8 +46,22 @@
     <div class="navText">Contact</div>
   </nav>
 
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide"><img src="image/VERTICALPOSTER1.jpg" alt="Image 1"></div>
+      <div class="slide"><img src="image/VERTICALPOSTER2E.jpg" alt="Image 2"></div>
+      <div class="slide"><img src="image/VERTICALPOSTER1.jpg" alt="Image 1"></div>
+      <div class="slide"><img src="image/VERTICALPOSTER2E.jpg" alt="Image 2"></div>
+      <div class="slide"><img src="image/VERTICALPOSTER2E.jpg" alt="Image 2"></div>
+      <div class="slide"><img src="image/VERTICALPOSTER1.jpg" alt="Image 1"></div>
+      <!-- Add more slides as needed -->
+    </div>
+  </div>
+
+
   <div class="cardContainer">
-    <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0">This is content</div>
     <div class="poster-card" data-scroll="0"></div>
     <div class="poster-card" data-scroll="0"></div>
     <div class="poster-card" data-scroll="0"></div>
@@ -114,6 +128,10 @@ setInterval(checkAlignment, 100);
 
   </script> -->
 
+
+  <script src="javascript/slider.js">
+    
+  </script>
   <script>
 function checkAlignment() {
   // Get the #Bg-Image-Sub element
@@ -162,13 +180,11 @@ function checkAlignment() {
         cards[i].classList.add("odd-card");
       }
     } else {
-      // Remove glowing border and additional class from non-matching poster cards
       cards[i].classList.remove("glow-border", "even-card", "odd-card");
     }
   }
 }
 
-// Set the interval to check alignment every 100 milliseconds (adjust as needed)
 setInterval(checkAlignment, 100);
 
   </script>
