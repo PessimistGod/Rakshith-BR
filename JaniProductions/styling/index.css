@@ -179,6 +179,7 @@ body {
   transition: clip-path 0.3s;
 }
 
+
 .cardContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -193,6 +194,9 @@ body {
 
 
 
+.glow-border {
+  box-shadow: 0 0 10px 5px #ffcc00; /* Adjust the color and size as needed */
+}
 
 /* ************************************Animation Keyframes*************************** */
 @-webkit-keyframes bounce-in-top {

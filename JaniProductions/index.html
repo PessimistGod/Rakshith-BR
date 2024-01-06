@@ -58,9 +58,40 @@
     AOS.init();
   </script>
 
+  <script>
+  function checkAlignment() {
+    // Get the #Bg-Image-Sub element
+    const bgImageSub = document.getElementById("Bg-Image-Sub");
+    const cards = document.getElementsByClassName("poster-card");
+
+    const bgRect = bgImageSub.getBoundingClientRect();
+
+    for (let i = 0; i < cards.length; i++) {
+      const cardRect = cards[i].getBoundingClientRect();
+
+      const isMatch =
+        cardRect.top < bgRect.bottom &&
+        cardRect.bottom > bgRect.top &&
+        cardRect.left < bgRect.right &&
+        cardRect.right > bgRect.left;
+
+      if (isMatch) {
+        console.log("Match found with poster card:", i + 1);
+        // Add a glowing border to the matching poster card
+        cards[i].classList.add("glow-border");
+      } else {
+        // Remove glowing border from non-matching poster cards
+        cards[i].classList.remove("glow-border");
+      }
+    }
+  }
+
+  // Set the interval to check alignment every 100 milliseconds (adjust as needed)
+  setInterval(checkAlignment, 100);
 
 
 
+  </script>
 </body>
 
 </html>
