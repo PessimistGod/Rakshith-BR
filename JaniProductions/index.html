@@ -1,54 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styling/index.css" />
-  </head>
-  <body>
-    <nav class="background-nav flexCenter flexNavGap">
-      <div class="navText">Home </div>
-      <div class="navText">About</div>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="styling/index.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
 
-      <div class="flexColumnCenter">
-        <div class="flexCenter" style="position: relative; flex-direction: column;">
+<body>
+  <div id="Bg-Image-Sub">
+    <div class="Bg-light-o"></div>
+  </div>
 
-          <div class="slide-in-blurred-top top-image-drop">
-            <img class="logoDrop" src="/image/dropLet.png" alt="" />
-          </div>
-          
-          <div class="bounce-in-top top-image-cresent">
-            <img class="logoTopCresent" src="/image/topCresent.png" alt="" />
-          </div>
+  <nav class="background-nav flexCenter flexNavGap">
+    <div class="navText">Home </div>
+    <div class="navText">About</div>
+
+    <div class="flexColumnCenter">
+      <div class="flexCenter" style="position: relative; flex-direction: column;">
+
+        <div class="slide-in-blurred-top top-image-drop">
+          <img class="logoDrop" src="/image/dropLet.png" alt="" />
         </div>
 
-        <div class="flexCenter" style="position: relative;">
-
-          <div class="fade-in-fwd j-symbol center-image-logo inline">
-            <img class="logoJmain" src="/image/janitriJMain.png" alt="" />
-          </div>
-
-          <div class="roll-in-right right-image-logo">
-            <img class="logoRightCresent" src="/image/rightCresent.png" alt="" />
-          </div>
+        <div class="bounce-in-top top-image-cresent">
+          <img class="logoTopCresent" src="/image/topCresent.png" alt="" />
         </div>
-
       </div>
 
-      <div class="navText">Service</div>
-      <div class="navText">Contact</div>
-    </nav>
+      <div class="flexCenter" style="position: relative;">
 
+        <div class="fade-in-fwd j-symbol center-image-logo inline">
+          <img class="logoJmain" src="/image/janitriJMain.png" alt="" />
+        </div>
 
-    <div class="youtube-video-outer-div">
+        <div class="roll-in-right right-image-logo">
+          <img class="logoRightCresent" src="/image/rightCresent.png" alt="" />
+        </div>
+      </div>
+    </div>
 
-      <div>Hello world</div>
+    <div class="navText">Service</div>
+    <div class="navText">Contact</div>
+  </nav>
 
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2n-VFg65eV0?si=YI9LJAFQgzb-4tKZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2n-VFg65eV0?si=YI9LJAFQgzb-4tKZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </body>
+  <div class="cardContainer">
+    <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0"></div>
   </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
+
+
+</body>
+
 </html>
