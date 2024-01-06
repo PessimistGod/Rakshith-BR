@@ -180,6 +180,8 @@ body {
 }
 
 
+
+
 .cardContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -195,7 +197,17 @@ body {
 
 
 .glow-border {
-  box-shadow: 0 0 10px 5px #ffcc00; /* Adjust the color and size as needed */
+  box-shadow: 0 0 2px 2px #ffcc00; /* Adjust the color and size as needed */
+}
+
+.even-card {
+    box-shadow: 10px 0 20px 0 #ffcc00;/* Adjust the color and size for even cards */
+}
+
+
+
+.odd-card {
+  box-shadow: -10px 0 20px 0 #ffcc00; /* Adjust the color and size for odd cards */
 }
 
 /* ************************************Animation Keyframes*************************** */

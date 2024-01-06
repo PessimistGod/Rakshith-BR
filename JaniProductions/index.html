@@ -51,6 +51,8 @@
     <div class="poster-card" data-scroll="0"></div>
     <div class="poster-card" data-scroll="0"></div>
     <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0"></div>
+    <div class="poster-card" data-scroll="0"></div>
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -58,40 +60,119 @@
     AOS.init();
   </script>
 
-  <script>
-  function checkAlignment() {
-    // Get the #Bg-Image-Sub element
-    const bgImageSub = document.getElementById("Bg-Image-Sub");
-    const cards = document.getElementsByClassName("poster-card");
+  <!-- <script>
 
-    const bgRect = bgImageSub.getBoundingClientRect();
 
-    for (let i = 0; i < cards.length; i++) {
-      const cardRect = cards[i].getBoundingClientRect();
+function checkAlignment() {
+  // Get the #Bg-Image-Sub element
+  const bgImageSub = document.getElementById("Bg-Image-Sub");
+  const cards = document.getElementsByClassName("poster-card");
 
-      const isMatch =
-        cardRect.top < bgRect.bottom &&
-        cardRect.bottom > bgRect.top &&
-        cardRect.left < bgRect.right &&
-        cardRect.right > bgRect.left;
+  const bgRect = bgImageSub.getBoundingClientRect();
 
-      if (isMatch) {
-        console.log("Match found with poster card:", i + 1);
-        // Add a glowing border to the matching poster card
-        cards[i].classList.add("glow-border");
-      } else {
-        // Remove glowing border from non-matching poster cards
-        cards[i].classList.remove("glow-border");
-      }
+  // Set the radius for precise alignment
+  const radius = 400;
+
+  for (let i = 0; i < cards.length; i++) {
+    const cardRect = cards[i].getBoundingClientRect();
+
+    // Calculate the center coordinates of the glowing area
+    const bgCenterX = (bgRect.left + bgRect.right) / 2;
+    const bgCenterY = (bgRect.top + bgRect.bottom) / 2;
+
+    // Calculate the center coordinates of the current card
+    const cardCenterX = (cardRect.left + cardRect.right) / 2;
+    const cardCenterY = (cardRect.top + cardRect.bottom) / 2;
+
+    // Calculate the distance between the centers
+    const distance = Math.sqrt(
+      Math.pow(bgCenterX - cardCenterX, 2) +
+      Math.pow(bgCenterY - cardCenterY, 2)
+    );
+
+    // Check if the card is within the specified radius
+    const isMatch =
+      cardRect.top < bgRect.bottom &&
+      cardRect.bottom > bgRect.top &&
+      cardRect.left < bgRect.right &&
+      cardRect.right > bgRect.left &&
+      distance <= radius;
+
+    if (isMatch) {
+      console.log("Match found with poster card:", i + 1);
+      // Add a glowing border to the matching poster card
+      cards[i].classList.add("glow-border");
+    } else {
+      // Remove glowing border from non-matching poster cards
+      cards[i].classList.remove("glow-border");
     }
   }
+}
 
-  // Set the interval to check alignment every 100 milliseconds (adjust as needed)
-  setInterval(checkAlignment, 100);
+// Set the interval to check alignment every 100 milliseconds (adjust as needed)
+setInterval(checkAlignment, 100);
 
+  </script> -->
 
+  <script>
+function checkAlignment() {
+  // Get the #Bg-Image-Sub element
+  const bgImageSub = document.getElementById("Bg-Image-Sub");
+  const cards = document.getElementsByClassName("poster-card");
+
+  const bgRect = bgImageSub.getBoundingClientRect();
+
+  // Set the horizontal and vertical radii for the elliptical area
+  const horizontalRadius = 600;
+  const verticalRadius = 400;
+
+  for (let i = 0; i < cards.length; i++) {
+    const cardRect = cards[i].getBoundingClientRect();
+
+    // Calculate the center coordinates of the glowing area
+    const bgCenterX = (bgRect.left + bgRect.right) / 2;
+    const bgCenterY = (bgRect.top + bgRect.bottom) / 2;
+
+    // Calculate the center coordinates of the current card
+    const cardCenterX = (cardRect.left + cardRect.right) / 2;
+    const cardCenterY = (cardRect.top + cardRect.bottom) / 2;
+
+    // Calculate the horizontal and vertical distances
+    const horizontalDistance = Math.abs(bgCenterX - cardCenterX);
+    const verticalDistance = Math.abs(bgCenterY - cardCenterY);
+
+    // Check if the card is within the specified elliptical area
+    const isMatch =
+      cardRect.top < bgRect.bottom &&
+      cardRect.bottom > bgRect.top &&
+      cardRect.left < bgRect.right &&
+      cardRect.right > bgRect.left &&
+      (horizontalDistance / horizontalRadius) ** 2 +
+        (verticalDistance / verticalRadius) ** 2 <= 1;
+
+    if (isMatch) {
+      console.log("Match found with poster card:", i + 1);
+      // Add a glowing border to the matching poster card
+      cards[i].classList.add("glow-border");
+
+      // Add additional class for even/odd cards
+      if (i % 2 === 0) {
+        cards[i].classList.add("even-card");
+      } else {
+        cards[i].classList.add("odd-card");
+      }
+    } else {
+      // Remove glowing border and additional class from non-matching poster cards
+      cards[i].classList.remove("glow-border", "even-card", "odd-card");
+    }
+  }
+}
+
+// Set the interval to check alignment every 100 milliseconds (adjust as needed)
+setInterval(checkAlignment, 100);
 
   </script>
+
 </body>
 
 </html>
