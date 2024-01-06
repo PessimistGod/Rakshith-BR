@@ -15,12 +15,11 @@ body{
 }
 .background-nav {
   width: 100%;
-  height: auto;
   padding: 20px;
   background-image: url('/image/NavBar.svg');
   color: white;
   background-repeat:no-repeat;
-  background-size: 100% auto;
+  background-size: 100% 100%;
 }
 .flexColumnCenter {
   display: flex;
